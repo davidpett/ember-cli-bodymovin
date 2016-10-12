@@ -7,8 +7,10 @@ module.exports = {
   included: function(app) {
     this._super.included(app);
 
-    this.ui.writeLine("Let's get bodymovin!");
-    app.import('vendor/bodymovin.js');
+    if (!process.env.EMBER_CLI_FASTBOOT) {
+      this.ui.writeLine("Let's get bodymovin!");
+      app.import('vendor/bodymovin.js');
+    }
   },
 
   isDevelopingAddon: function() {
